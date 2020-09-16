@@ -1,5 +1,5 @@
 {
-  "name": "@shopify/slate-tools",
+  "name": "@strawberry/slate-tools",
   "version": "0.14.0",
   "description": "Tooling for Shopify themes",
   "main": "lib/gulpfile.js",
