@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
+const webpack = require('webpack-stream');
 const uglify = require('gulp-uglify');
 const include = require('gulp-include');
 const plumber = require('gulp-plumber');
@@ -32,8 +32,6 @@ function processVendorJs() {
 
 function processEs6Js() {
   messages.logProcessFiles('build:es6-js');
-  console.log('processing es6');
-
   return gulp.src(
     [
       'node_modules/babel-polyfill/dist/polyfill.js',
@@ -41,11 +39,8 @@ function processEs6Js() {
     ])
     .pipe(plumber(utils.errorHandler))
     .pipe(include())
-    .pipe(babel({presets: ['es2015']}))
-    .pipe(uglify({
-      mangle: true,
-      compress: true,
-      preserveComments: 'license',
+    .pipe(webpack({
+      //
     }))
     .pipe(gulp.dest(config.dist.assets));
 }
