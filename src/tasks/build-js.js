@@ -47,7 +47,7 @@ function processEs6Js() {
       compress: true,
       preserveComments: 'license',
     }))
-    .pipe(gulp.dest('compiled'));
+    .pipe(gulp.dest(config.dist.assets));
 }
 
 gulp.task('build:js', () => {
