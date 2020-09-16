@@ -51,7 +51,7 @@ const config = {
     root: 'src/',
     js: 'src/scripts/**/*.{js,js.liquid}',
     vendorJs: 'src/scripts/vendor/*.js',
-    es6Js: 'src/scripts/es6/*.js',
+    webpackJs: 'src/scripts/webpack/*.js',
     json: 'src/**/*.json',
     css: 'src/styles/**/*.{css,scss,scss.liquid}',
     cssLint: 'src/styles/**/*.{css,scss}',
@@ -79,7 +79,7 @@ const config = {
   roots: {
     js: 'src/scripts/*.{js,js.liquid}',
     vendorJs: 'src/scripts/vendor.js',
-    es6Js: 'src/scripts/es6.js',
+    webpackJs: 'src/scripts/webpack.js',
     css: 'src/styles/*.{css,scss}',
   },
 

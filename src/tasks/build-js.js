@@ -30,12 +30,12 @@ function processVendorJs() {
     .pipe(gulp.dest(config.dist.assets));
 }
 
-function processEs6Js() {
-  messages.logProcessFiles('build:es6-js');
+function processwebpackJs() {
+  messages.logProcessFiles('build:webpack-js');
   return gulp.src(
     [
       'node_modules/babel-polyfill/dist/polyfill.js',
-      config.roots.es6Js,
+      config.roots.webpackJs,
     ])
     .pipe(plumber(utils.errorHandler))
     .pipe(include())
@@ -67,14 +67,14 @@ gulp.task('watch:vendor-js', () => {
     });
 });
 
-gulp.task('build:es6-js', () => {
-  processEs6Js();
+gulp.task('build:webpack-js', () => {
+  processwebpackJs();
 });
 
-gulp.task('watch:es6-js', () => {
-  chokidar.watch([config.roots.es6Js, config.src.es6Js], {ignoreInitial: true})
+gulp.task('watch:webpack-js', () => {
+  chokidar.watch([config.roots.webpackJs, config.src.webpackJs], {ignoreInitial: true})
     .on('all', (event, path) => {
       messages.logFileEvent(event, path);
-      processEs6Js();
+      processwebpackJs();
     });
 });
