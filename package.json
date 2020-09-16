@@ -1,11 +1,12 @@
 {
   "name": "@shopify/slate-tools",
-  "version": "0.3.3",
+  "version": "0.14.0",
   "description": "Tooling for Shopify themes",
   "main": "lib/gulpfile.js",
   "license": "MIT",
   "author": "Shopify Inc.",
   "dependencies": {
+    "@babel/core": "^7.11.6",
     "@shopify/theme-lint": "1.0.3",
     "@shopify/themekit": "0.6.6",
     "bluebird": "3.4.6",
@@ -36,21 +37,25 @@
   },
   "devDependencies": {
     "babel-cli": "6.18.0",
-    "babel-core": "6.18.2",
+    "babel-core": "^6.18.2",
     "babel-plugin-add-shopify-header": "1.0.6",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-shopify": "15.0.1",
     "babel-register": "6.18.0",
     "eslint": "3.10.2",
+    "eslint-plugin-import": "2.7.0",
     "eslint-plugin-node": "3.0.4",
-    "eslint-plugin-shopify": "15.1.0"
+    "eslint-plugin-shopify": "15.1.0",
+    "gulp-babel": "^8.0.0"
   },
   "scripts": {
     "clean": "rm -rf lib/",
     "start": "npm run clean && babel -w -d lib/ src/",
     "test": "npm run lint",
     "prepublish": "npm test && npm run clean && babel -d lib/ src/",
-    "lint": "eslint --max-warnings 0 -c .eslintrc.json src/",
-    "lint-allow-warning": "eslint -c .eslintrc.json src/"
+    "lint": "eslint --max-warnings 0 src/",
+    "lint-allow-warning": "eslint src/"
   },
   "keywords": [
     "shopify",
@@ -58,10 +63,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Shopify/slate-tools.git"
+    "url": "git://github.com/Shopify/slate.git"
   },
-  "homepage": "https://github.com/Shopify/slate-tools",
+  "homepage": "https://github.com/Shopify/slate",
   "bugs": {
-    "url": "https://github.com/Shopify/slate-tools/issues"
+    "url": "https://github.com/Shopify/slate/issues"
   }
 }

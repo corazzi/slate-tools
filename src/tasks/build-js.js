@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const include = require('gulp-include');
 const plumber = require('gulp-plumber');
@@ -29,6 +30,25 @@ function processVendorJs() {
     .pipe(gulp.dest(config.dist.assets));
 }
 
+function processEs6Js() {
+  messages.logProcessFiles('build:es6-js');
+  console.log('processing es6');
+  return gulp.src(
+    [
+      'node_modules/babel-polyfill/dist/polyfill.js',
+      config.roots.es6Js,
+    ])
+    .pipe(plumber(utils.errorHandler))
+    .pipe(include())
+    .pipe(babel({presets: ['es2015']}))
+    .pipe(uglify({
+      mangle: true,
+      compress: true,
+      preserveComments: 'license',
+    }))
+    .pipe(gulp.dest('compiled'));
+}
+
 gulp.task('build:js', () => {
   processThemeJs();
 });
@@ -50,5 +70,17 @@ gulp.task('watch:vendor-js', () => {
     .on('all', (event, path) => {
       messages.logFileEvent(event, path);
       processVendorJs();
+    });
+});
+
+gulp.task('build:es6-js', () => {
+  processEs6Js();
+});
+
+gulp.task('watch:es6-js', () => {
+  chokidar.watch([config.roots.es6Js, config.src.es6Js], {ignoreInitial: true})
+    .on('all', (event, path) => {
+      messages.logFileEvent(event, path);
+      processEs6Js();
     });
 });
