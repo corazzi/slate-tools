@@ -39,7 +39,7 @@ function processEs6Js() {
     ])
     .pipe(plumber(utils.errorHandler))
     .pipe(include())
-    .pipe(webpack(require('../../webpack.config')))
+    .pipe(webpack(require(config.webpackConfig)))
     .pipe(gulp.dest(config.dist.assets));
 }
 

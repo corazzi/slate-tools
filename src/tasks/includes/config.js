@@ -45,6 +45,7 @@ const config = {
 
   tkConfig: 'config.yml',
   deployLog: 'deploy.log',
+  webpackConfig: `${themeRoot}/webpack.config`,
 
   src: {
     root: 'src/',
