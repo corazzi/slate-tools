@@ -33,6 +33,7 @@ function processVendorJs() {
 function processEs6Js() {
   messages.logProcessFiles('build:es6-js');
   console.log('processing es6');
+
   return gulp.src(
     [
       'node_modules/babel-polyfill/dist/polyfill.js',
